@@ -58,6 +58,7 @@ Use of the resulting dataset "tidy_movement_data.txt" in publications must be ac
 This dataset is distributed AS-IS and no responsibility implied or explicit can be addressed to the author for its use or misuse. Any commercial use is prohibited.
 
 Run_analysis.R operation
+========================
 
 The dataset is created from accelerometer and gyroscope data from Samsung SII's worn by 30 volunteers.  
 The libraries of ddplr and reshape2 are loaded and then the training data set is loaded into traindata from X_train.txt 
