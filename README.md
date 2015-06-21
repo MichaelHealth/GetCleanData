@@ -1,4 +1,30 @@
-The file run_analysis.R is run from the same directory as the UCI HAR Dataset.  The file requests data from the data set and modifies, reshapes it, and creates a tidy date set.  Information of the data set is below followed by more detail on the run_analysis.R operation.   For more details on the code see the codebook.md in this directory.
+The file run_analysis.R is run from the same directory as the UCI HAR Dataset.  The file requests data from the data set and modifies, reshapes it, and creates a tidy date set.  Information of the  run_analysis.R operation is below followed by more detail on the data set.   For more details on the code see the codebook.md in this directory.
+
+Run_analysis.R operation
+========================
+
+The libraries of ddplr and reshape2 are loaded and then the training data set is loaded into traindata from X_train.txt 
+and the features.txt file is loaded to create the column names.  
+
+Two additional columns are created.  Action_ID is from the y_train.txt file and has digit from 1-6 denoting the type of activity.
+Person_ID has the number of the test volunteers from the subject_train.txt.  Action_ID and PersonID are then added to the 
+traindata with rbind.  
+
+The features.txt file is used to create featureslist which is then loased into the column names of the traindata.  Finally the Action_ID and Person_ID columns are named.
+
+The same process is repeated with the test data directory to create the testdata dataframe.  Then traindata and testdata are joined together with rbind to make bigdata.  
+
+The Action_ID column is then converted from number 1-6 format to the descriptive activity name.  
+
+The column names are then converted to more decriptive names with a series of gsub cammands removing -, (), and certain lower
+case letters from the column names.
+
+bigdata is then converted to DataShow and DataView with the melt and dcast commands.  
+These commands use the Action_ID and Person_ID as identifiers and average all of the other readings for each column name.  
+
+The DataView is converted to DataView.txt file with columns aligned and significant digits reduced to 5 to keep with 
+a tidy data set.  This the output of run_analysis.R.
+
 
 ==================================================================
 Human Activity Recognition Using Smartphones Dataset
@@ -57,31 +83,6 @@ Use of the resulting dataset "tidy_movement_data.txt" in publications must be ac
 
 This dataset is distributed AS-IS and no responsibility implied or explicit can be addressed to the author for its use or misuse. Any commercial use is prohibited.
 
-Run_analysis.R operation
-========================
-
-The dataset is created from accelerometer and gyroscope data from Samsung SII's worn by 30 volunteers.  
-The libraries of ddplr and reshape2 are loaded and then the training data set is loaded into traindata from X_train.txt 
-and the features.txt file is loaded to create the column names.  
-
-Two additional columns are created.  Action_ID is from the y_train.txt file and has digit from 1-6 denoting the type of activity.
-Person_ID has the number of the test volunteers from the subject_train.txt.  Action_ID and PersonID are then added to the 
-traindata with rbind.  
-
-The features.txt file is used to create featureslist which is then loased into the column names of the traindata.  Finally the Action_ID and Person_ID columns are named.
-
-The same process is repeated with the test data directory to create the testdata dataframe.  Then traindata and testdata are joined together with rbind to make bigdata.  
-
-The Action_ID column is then converted from number 1-6 format to the descriptive activity name.  
-
-The column names are then converted to more decriptive names with a series of gsub cammands removing -, (), and certain lower
-case letters from the column names.
-
-bigdata is then converted to DataShow and DataView with the melt and dcast commands.  
-These commands use the Action_ID and Person_ID as identifiers and average all of the other readings for each column name.  
-
-The DataView is converted to DataView.txt file with columns aligned and significant digits reduced to 5 to keep with 
-a tidy data set.  This the output of run_analysis.R.
 
 
 
