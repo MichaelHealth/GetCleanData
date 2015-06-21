@@ -1,4 +1,5 @@
-This codebook describes the operation and the variables of the run_analysis.R file.  The file is run from the same directory as the UCI HAR Dataset.  
+This codebook describes the operation and the variables of the run_analysis.R file.  The file is run from the same directory 
+as the UCI HAR Dataset.  
 The dataset is created from accelerometer and gyroscope data from Samsung SII's worn by 30 volunteers.  
 The libraries of ddplr and reshape2 are loaded and then the training data set is loaded into traindata from X_train.txt 
 and the features.txt file is loaded to create the column names.  
