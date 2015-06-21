@@ -14,7 +14,7 @@ The features.txt file is used to create featureslist which is then loased into t
 
 The same process is repeated with the test data directory to create the testdata dataframe.  Then traindata and testdata are joined together with rbind to make bigdata.  
 
-The Action_ID column is then converted from number 1-6 format to the descriptive activity name.  
+The Action_ID column is then converted from number 1-6 format to the descriptive activity name WALKING SITTING, etc.  
 
 The column names are then converted to more decriptive names with a series of gsub cammands removing -, (), and certain lower
 case letters from the column names.
