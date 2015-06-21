@@ -1,1 +1,11 @@
-This describes the names of the variables for the run_analysis.R file.
+This codebook describes the operation and the variables of the run_analysis.R file.  The file is run from the same directory as the UCI HAR Dataset.  The dataset is created from accelerometer and gyroscope data from Samsung SII's worn by 30 persons.  
+The libraries of ddplr and reshape2 are loaded and then the training data set is loaded into traindata from X_train.txt and the features.txt file is loaded to create the column names.  
+Two additional columns are created.  Action_ID is from the y_train.txt file and has digit from 1-6 denoting the type of activity.  Person_ID has the number of the test volunteers from the subject_train.txt.  Action_ID and PerosnID are then added to the traindata with rbind.  
+
+The features.txt file is used to create featureslist which is then loased into the column names of the traindata.  Finally the Action_ID and Person_ID columns are named.
+
+The same process is repeated with the test data directory to create the testdata dataframe.  Then traindata and testdata are joined together with rbind to make bigdata.  
+
+The Action_ID column is then converted from number 1-6 format to the descriptive activity name.  
+
+The column names are then converted to more decriptive names with a series of gsub cammands removing -, (), and certain lower case letters from the column names.
